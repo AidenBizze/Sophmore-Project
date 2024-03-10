@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Car Maintenance App</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <header>
+       <h1>Welcome to Car Maintenance App</h1>
+       <!-- Increase the width of the image -->
+       <img src="/Users/FLOATERS/Desktop/Car.jpeg" alt="Car Maintenance" width="500">
+   </header>
+   <main>
+       <div class="container">
+           <button id="loginBtn">Log In</button>
+           <button id="signupBtn">Sign Up</button>
+       </div>
+   </main>
+   <footer>
+       <p>&copy; 2024 Car Maintenance App</p>
+   </footer>
+   <script src="script.js"></script>
+   <script>
+       document.getElementById("loginBtn").addEventListener("click", function() {
+           window.location.href = "login.html"; // Redirect to login page
+       });
+       document.getElementById("signupBtn").addEventListener("click", function() {
+           window.location.href = "signup.html"; // Redirect to sign up page
+       });
+   </script>
+</body>
+</html>
+

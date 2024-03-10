@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Car Maintenance App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the back button */
+        #backBtn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 16px;
+            width: auto;
+            padding: 5px 10px;
+        }
+
+        /* Custom styles for the input fields */
+        input[type="text"],
+        input[type="password"] {
+            width: 300px; /* Adjust width as needed */
+            height: 40px; /* Adjust height as needed */
+            font-size: 20px; /* Increase font size */
+            margin-bottom: 10px; /* Add margin bottom */
+            display: block; /* Display as block to stack them vertically */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to Car Maintenance App</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+        <button id="backBtn">Back</button> <!-- Back button -->
+    </footer>
+
+    <script src="login.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Redirect to the app page
+            window.location.href = "app_page.html";
+        });
+
+        // Event listener for the back button
+        document.getElementById("backBtn").addEventListener("click", function() {
+            window.history.back(); // Navigate to the previous page in the browser's history
+        });
+    </script>
+</body>
+</html>
+
+
