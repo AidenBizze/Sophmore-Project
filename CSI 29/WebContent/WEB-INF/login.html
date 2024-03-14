@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Car Maintenance App</title>
+    <title>Sign Up - Car Maintenance App</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Custom styles for the back button */
@@ -29,16 +29,18 @@
 </head>
 <body>
     <header>
-        <h1>Login to Car Maintenance App</h1>
+        <h1>Create an Account - Car Maintenance App</h1>
     </header>
     <main>
         <div class="container">
-            <form id="loginForm">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+            <form id="signupForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="submit">Log In</button>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     </main>
@@ -46,20 +48,52 @@
         <p>&copy; 2024 Car Maintenance App</p>
         <button id="backBtn">Back</button> <!-- Back button -->
     </footer>
-
-    <script src="login.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting
+    
+const firebaseConfig = {
+    apiKey: "AIzaSyCAPooAHc11ixy-4ZcFjxK6k147MgXfky8",
+    authDomain: "carmaintenance-74ac6.firebaseapp.com",
+    projectId: "carmaintenance-74ac6",
+    storageBucket: "carmaintenance-74ac6.appspot.com",
+    messagingSenderId: "476378427398",
+    appId: "1:476378427398:web:ae07f1374cc344a6479387",
+    measurementId: "G-Y57G39LL77"
+};
 
-            // Redirect to the app page
+  // Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+firebase.getAnalytics(app);
+</script>
+    <script src="signup.js"></script>
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if(password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        // Firebase Authentication for Sign Up
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            // Redirect to the app page or show a success message
             window.location.href = "app_page.html";
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // Handle errors here, such as displaying a message
+            alert(errorMessage);
         });
-
-        // Event listener for the back button
-        document.getElementById("backBtn").addEventListener("click", function() {
-            window.history.back(); // Navigate to the previous page in the browser's history
-        });
+    });
     </script>
 </body>
 </html>
