@@ -84,5 +84,23 @@
             window.history.back();
         });
     </script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script>
+      
+    const firebaseConfig = {
+        apiKey: "AIzaSyCAPooAHc11ixy-4ZcFjxK6k147MgXfky8",
+        authDomain: "carmaintenance-74ac6.firebaseapp.com",
+        projectId: "carmaintenance-74ac6",
+        storageBucket: "carmaintenance-74ac6.appspot.com",
+        messagingSenderId: "476378427398",
+        appId: "1:476378427398:web:ae07f1374cc344a6479387",
+        measurementId: "G-Y57G39LL77"
+    };
+    
+      // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    firebase.getAnalytics(app);
+    </script>
 </body>
 </html>
