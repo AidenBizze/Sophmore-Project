@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Profiles - Car Maintenance App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the vehicle profiles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-profile {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-profile h3 {
+            margin-top: 0;
+        }
+
+        .vehicle-profile p {
+            margin: 5px 0;
+            line-height: 1.5; /* Improved spacing between lines */
+        }
+
+        .vehicle-profile p strong {
+            margin-right: 5px; /* Add a small margin to separate labels and values */
+        }
+
+        /* Style for the back button */
+        #backBtn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vehicle Profiles</h1>
+    </header>
+    <main>
+        <!-- Back button -->
+        <button id="backBtn" onclick="goBack()">Back</button>
+        <div class="container">
+            <h2>All Vehicle Profiles</h2>
+            <!-- Sample vehicle profile -->
+            <div class="vehicle-profile">
+                <h3>Vehicle 1</h3>
+                <p><strong>Make:</strong> </p>
+                <p><strong>Model:</strong> </p>
+                <p><strong>Year:</strong> </p>
+                <p><strong>Mileage:</strong> </p>
+                <p><strong>Color:</strong> </p>
+                <p><strong>Fuel Type:</strong> </p>
+            </div>
+            <!-- Another sample vehicle profile -->
+            <div class="vehicle-profile">
+                <h3>Vehicle 2</h3>
+                <p><strong>Make:</strong> </p>
+                <p><strong>Model:</strong> </p>
+                <p><strong>Year:</strong> </p>
+                <p><strong>Mileage:</strong> </p>
+                <p><strong>Color:</strong> </p>
+                <p><strong>Fuel Type:</strong> </p>
+            </div>
+            <!-- Add more vehicle profiles as needed -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+    </footer>
+
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script>
+    
+    const firebaseConfig = {
+        apiKey: "AIzaSyCAPooAHc11ixy-4ZcFjxK6k147MgXfky8",
+        authDomain: "carmaintenance-74ac6.firebaseapp.com",
+        projectId: "carmaintenance-74ac6",
+        storageBucket: "carmaintenance-74ac6.appspot.com",
+        messagingSenderId: "476378427398",
+        appId: "1:476378427398:web:ae07f1374cc344a6479387",
+        measurementId: "G-Y57G39LL77"
+    };
+    
+      // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    firebase.getAnalytics(app);
+    </script>
+</body>
+</html>

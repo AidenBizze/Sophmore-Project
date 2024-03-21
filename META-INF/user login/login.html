@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Car Maintenance App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the back button */
+        #loginBackBtn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1rem;
+            width: auto;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Custom styles for the input fields */
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 2rem); /* Adjust width as needed */
+            height: 3rem; /* Adjust height as needed */
+            font-size: 1.5rem; /* Increase font size */
+            margin-bottom: 1rem; /* Add margin bottom */
+            padding: 0.5rem; /* Add padding */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            display: block; /* Display as block to stack them vertically */
+        }
+
+        /* Custom styles for the buttons */
+        button {
+            width: calc(100% - 2rem); /* Adjust width as needed */
+            height: 3rem; /* Adjust height as needed */
+            font-size: 1.5rem; /* Increase font size */
+            margin-bottom: 1rem; /* Add margin bottom */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #333; /* Set background color to dark gray */
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ddd; /* Light gray on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to Car Maintenance App</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+        <button id="loginBackBtn">Back</button> <!-- Back button -->
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "carmaintenance-74ac6.firebaseapp.com",
+            projectId: "carmaintenance-74ac6",
+            storageBucket: "carmaintenance-74ac6.appspot.com",
+            messagingSenderId: "476378427398",
+            appId: "1:476378427398:web:ae07f1374cc344a6479387",
+            measurementId: "G-Y57G39LL77"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        firebase.getAnalytics(app);
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Firebase Authentication
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in 
+                var user = userCredential.user;
+                // Redirect to the app page or do something with the user info
+                window.location.href = "app_page.html";
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // Handle errors here, such as displaying a message
+                alert(errorMessage);
+            });
+        });
+
+        // Redirect back to index.html when clicking the back button
+        document.getElementById("loginBackBtn").addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
+
+

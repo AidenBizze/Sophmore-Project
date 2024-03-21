@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service History - Car Maintenance App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add custom styles for service history page */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Make the container relative */
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .service-entry {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .service-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .service-details {
+            margin-bottom: 10px;
+        }
+
+        .service-cost {
+            font-weight: bold;
+        }
+
+        /* Adjust position of dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%; /* Position below the button */
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1; /* Ensure dropdown is above other elements */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Service History</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Recent Service Entries</h2>
+            <div class="service-entry">
+                <div class="service-date">Date: <span id="serviceDatePlaceholder">[Date]</span></div>
+                <div class="service-details">
+                    <p>Performed: <span id="serviceDetailsPlaceholder">[Service Details]</span></p>
+                </div>
+                <div class="service-cost">Total Cost: <span id="serviceCostPlaceholder">[Cost]</span></div>
+            </div>
+            <!-- You can add more service entries as needed with similar placeholders -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+        <button id="backBtn">Back</button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // JavaScript code for any functionality related to the service history page
+        // Add your JavaScript code here if needed
+
+        // Add event listener to the back button
+        document.getElementById("backBtn").addEventListener("click", function() {
+            // Redirect to the previous page
+            window.history.back();
+        });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script>
+      
+    const firebaseConfig = {
+        apiKey: "AIzaSyCAPooAHc11ixy-4ZcFjxK6k147MgXfky8",
+        authDomain: "carmaintenance-74ac6.firebaseapp.com",
+        projectId: "carmaintenance-74ac6",
+        storageBucket: "carmaintenance-74ac6.appspot.com",
+        messagingSenderId: "476378427398",
+        appId: "1:476378427398:web:ae07f1374cc344a6479387",
+        measurementId: "G-Y57G39LL77"
+    };
+    
+      // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    firebase.getAnalytics(app);
+    </script>
+</body>
+</html>

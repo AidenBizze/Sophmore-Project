@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Car Maintenance App</title>
+   <link rel="stylesheet" href="styles.css">
+   <style>
+       /* Additional styles for improved layout */
+       body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           background-color: white; /* Set background color to white */
+       }
+
+       header {
+           background-color: white;
+           color: #000; /* Set text color to black */
+           text-align: center;
+           padding: 1rem 0;
+       }
+
+       h1 {
+           margin-bottom: 10px;
+       }
+
+       img {
+           width: 80px; /* Smaller size of the image */
+           vertical-align: middle; /* Align the image vertically with the text */
+           margin-right: 10px; /* Add a small margin to the right of the image */
+       }
+
+       main {
+           text-align: center;
+           padding: 2rem 0;
+           position: absolute; /* Position the main element */
+           top: 50%; /* Move the main element 50% from the top */
+           left: 50%; /* Move the main element 50% from the left */
+           transform: translate(-50%, -50%); /* Center the main element */
+       }
+
+       .container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column; /* Stack buttons vertically */
+       }
+
+       .get-started {
+           margin-bottom: 20px; /* Add margin below the text */
+           font-size: 1.2rem; /* Adjust font size */
+           color: #333; /* Dark gray color */
+       }
+
+       button {
+           padding: 2rem 4rem; /* Larger padding for huge buttons */
+           margin: 1rem; /* Adjusted margin between buttons */
+           font-size: 2rem; /* Larger font size for huge buttons */
+           cursor: pointer;
+           border: none;
+           border-radius: 5px;
+           background-color: #333; /* Set background color to dark gray */
+           color: #fff;
+           transition: background-color 0.3s;
+       }
+
+       button:hover {
+           background-color: #ddd; /* Light gray on hover */
+       }
+
+       footer {
+           background-color: #333;
+           color: #fff;
+           text-align: center;
+           padding: 1rem 0;
+           position: fixed;
+           bottom: 0;
+           width: 100%;
+       }
+   </style>
+   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+   <script>
+       const firebaseConfig = {
+           apiKey: "AIzaSyCAPooAHc11ixy-4ZcFjxK6k147MgXfky8",
+           authDomain: "carmaintenance-74ac6.firebaseapp.com",
+           projectId: "carmaintenance-74ac6",
+           storageBucket: "carmaintenance-74ac6.appspot.com",
+           messagingSenderId: "476378427398",
+           appId: "1:476378427398:web:ae07f1374cc344a6479387",
+           measurementId: "G-Y57G39LL77"
+       };
+
+       // Initialize Firebase
+       const app = firebase.initializeApp(firebaseConfig);
+       firebase.getAnalytics(app);
+   </script>
+</head>
+<body>
+   <header>
+       <h1>Welcome to Car Maintenance App <img src="/Users/FLOATERS/Documents/4999 images/MainCar.png" alt="Car Maintenance"></h1>
+   </header>
+   <main>
+       <div class="container">
+           <p class="get-started">Get started here!</p>
+           <button id="loginBtn">Log In</button>
+           <button id="signupBtn">Sign Up</button>
+       </div>
+   </main>
+   <footer>
+       <p>&copy; 2024 Car Maintenance App</p>
+   </footer>
+   <script>
+       document.getElementById("loginBtn").addEventListener("click", function() {
+           window.location.href = "login.html"; // Redirect to login page
+       });
+       document.getElementById("signupBtn").addEventListener("click", function() {
+           window.location.href = "signup.html"; // Redirect to sign up page
+       });
+   </script>
+</body>
+</html>

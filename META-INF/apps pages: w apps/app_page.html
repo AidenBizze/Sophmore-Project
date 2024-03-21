@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Maintenance App - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the app icons */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            grid-gap: 20px;
+        }
+
+        .app-icon {
+            position: relative; /* Position the image relative to the button */
+            width: 170px; /* Adjusted size */
+            height: 170px; /* Adjusted size */
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column; /* Added to stack image and name */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden; /* Hide overflow to prevent image from exceeding button size */
+        }
+
+        .app-icon img {
+            width: auto; /* Allow image to adjust based on aspect ratio */
+            height: 100%;
+            object-fit: contain; /* Ensure the image is fully visible */
+            max-height: 70%; /* Adjusted size for the image */
+        }
+
+        .app-icon-name {
+            text-align: center;
+            margin-top: 10px; /* Increased margin */
+            font-size: 16px; /* Adjusted size for the name */
+            color: black; /* Set text color to white */
+            font-weight: bold; /* Increase font weight */
+        }
+
+        /* Customize the colors for each app icon */
+        .my-car-icon {
+            background-color: white;
+        }
+
+        .calendar-icon {
+            background-color: white;
+        }
+
+        .todo-list-icon {
+            background-color: white;
+        }
+
+        .additional-icon {
+            background-color: white;
+        }
+
+		      /* Dropdown menu */
+		.dropdown {
+		    position: absolute;
+		    top: 10px;
+		    right: 10px;
+		}
+		
+		.dropbtn {
+		    font-size: 16px;
+		    background-image: url('/Users/FLOATERS/Documents/4999 images/Menu.png'); /* Add your image URL here */
+		    background-size: 30px; /* Adjust size of the image */
+		    background-repeat: no-repeat; /* Prevent image from repeating */
+		    background-position: center; /* Center the background image */
+		    width: 50px; /* Set width of the button */
+		    height: 50px; /* Set height of the button */
+		    border-radius: 50%; /* Make it round */
+		    border: none; /* Remove border */
+		    background-color: rgba(255, 255, 255, 0.8); /* Translucent white background */
+		}
+		
+		.dropdown:hover .dropbtn {
+		    background-color: #f1f1f1; /* Gray background on hover */
+		}
+		
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: #f9f9f9;
+		    min-width: 160px;
+		    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		    z-index: 1;
+		}
+		
+		.dropdown:hover .dropdown-content {
+		    display: block;
+		}
+		
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
+		
+		.dropdown-content a:hover {
+		    background-color: #f1f1f1;
+		}
+		
+		/* Light gray background on hover */
+		.app-icon:hover {
+		    background-color: #f1f1f1; /* Light gray on hover */
+		}
+
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script> <!-- If you're using Firestore -->
+</head>
+<body>
+    <header>
+        <h1>Car Maintenance App - Home</h1>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"></button>
+            <div class="dropdown-content">
+                <a href="index.html">Login</a>
+                <a href="help.html">Help</a>
+                <a href="settings.html">Settings</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- App icons -->
+        <div class="container">
+            <div class="app-icon my-car-icon" onclick="toggleDropdown('myCarDropdown')">
+                <img src="/Users/FLOATERS/Documents/4999 images/MyCar.png" alt="My Car Image">
+                <div class="app-icon-name">My Car</div>
+            </div>
+            <div class="dropdown-content" id="myCarDropdown">
+                <a href="service-history.html">Service History</a>
+                <a href="vehicle-profile-creation.html">Vehicle Profile Creation</a>
+                <a href="vehicle-profiles.html" onclick="navigateTo('vehicle-profiles.html')">Vehicle Profiles</a>
+            </div>
+            <div class="app-icon calendar-icon" onclick="navigateTo('calendar.html')">
+                <img src="/Users/FLOATERS/Documents/4999 images/Calendar.png" alt="Calendar Image">
+                <div class="app-icon-name">Calendar</div>
+            </div>
+            <div class="app-icon todo-list-icon" onclick="navigateTo('todo-list.html')">
+                <img src="/Users/FLOATERS/Documents/4999 images/List.png" alt="To-Do List Image">
+                <div class="app-icon-name">To-Do List</div>
+            </div>
+            <!-- Additional app icons -->
+            <div class="app-icon additional-icon" onclick="navigateTo('cost-analysis.html')">
+                <img src="/Users/FLOATERS/Documents/4999 images/CostAna.png" alt="Cost Analysis Image">
+                <div class="app-icon-name">Cost Analysis</div>
+            </div>
+            <div class="app-icon additional-icon" onclick="navigateTo('location-tracker.html')">
+                <img src="/Users/FLOATERS/Documents/4999 images/Location.png" alt="Location Tracker Image">
+                <div class="app-icon-name">Location Tracker</div>
+            </div>
+            <div class="app-icon additional-icon" onclick="navigateTo('parts-lists.html')">
+                <img src="/Users/FLOATERS/Documents/4999 images/PartsNeed.png" alt="Parts Lists Image">
+                <div class="app-icon-name">Parts Lists</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+    </footer>
+
+    <script>
+        // Function to navigate to a specific page
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        // Function to toggle the dropdown menu
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
+        

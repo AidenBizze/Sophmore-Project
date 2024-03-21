@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Rating System</title>
+    <link rel="stylesheet" href="stylesRate.css">
+</head>
+<body style="background-color: lightblue;">
+    <div class="feedback-form">
+        <h1 class="title">Rate Your Experience</h1>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="shopName">Shop Name:</label>
+                <input type="text" id="shopName" name="shopName" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <div class="form-group">
+    <label for="rating">Rating:</label>
+		    <div class="rating">
+		        <input type="radio" id="heart5" name="rating" value="5">
+		        <label for="heart5" class="heart">&#x2665;</label>
+		        <input type="radio" id="heart4" name="rating" value="4">
+		        <label for="heart4" class="heart">&#x2665;</label>
+		        <input type="radio" id="heart3" name="rating" value="3">
+		        <label for="heart3" class="heart">&#x2665;</label>
+		        <input type="radio" id="heart2" name="rating" value="2">
+		        <label for="heart2" class="heart">&#x2665;</label>
+		        <input type="radio" id="heart1" name="rating" value="1">
+		        <label for="heart1" class="heart">&#x2665;</label>
+		    </div>
+</div>
+
+            </div>
+            <div class="form-group comment">
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments"></textarea>
+            </div>
+            <div class="form-group submit-btn">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
