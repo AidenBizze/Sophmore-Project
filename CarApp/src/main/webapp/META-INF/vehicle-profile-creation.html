@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Profile Creation</title>
+</head>
+<body>
+    <h1>Car Profile Creation</h1>
+    <form id="carProfileForm">
+        <label for="vinInput">VIN:</label>
+        <input type="text" id="vinInput" name="vin" required><br><br>
+        <input type="submit" value="Create Profile">
+    </form>
+    <div id="carProfile"></div>
+
+    <script>
+        document.getElementById('carProfileForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const vin = document.getElementById('vinInput').value.trim();
+
+            const url = `https://vin-decoder19.p.rapidapi.com/vin_decoder_basic?vin=${vin}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '03e8e8bdc9mshb23d430e22fbe1dp104ca8jsne75e219c39ad',
+                    'X-RapidAPI-Host': 'vin-decoder19.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+
+                // Display the retrieved data in the car profile div
+                document.getElementById('carProfile').innerHTML = `
+                    <h2>Car Profile</h2>
+                    <p><strong>VIN:</strong> ${vin}</p>
+                    <p><strong>Make:</strong> ${data.Make.value}</p>
+                    <p><strong>Model:</strong> ${data.Model.value}</p>
+                    <!-- Add more fields as needed -->
+                `;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>

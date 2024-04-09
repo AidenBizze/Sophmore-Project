@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Car Maintenance App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the input fields */
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 2rem);
+            height: 3rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            box-sizing: border-box;
+            display: block;
+        }
+
+        /* Custom styles for the buttons */
+        button {
+            width: calc(100% - 2rem);
+            height: 3rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        /* Custom styles for the footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f2f2f2; /* Light gray background */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to Car Maintenance App</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Maintenance App</p>
+    </footer>
+</body>
+</html>

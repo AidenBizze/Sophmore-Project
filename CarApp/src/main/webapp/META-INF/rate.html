@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Mechanic Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your custom CSS styles here */
+        /* Center the body text and buttons */
+        body {
+            text-align: center;
+        }
+        /* Style for stars */
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            text-align: left;
+        }
+        .rating > input { display: none; }
+        .rating > label { 
+            display: inline-block;
+            padding: 5px;
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .rating > label:hover,
+        .rating > input:checked ~ label { color: #f39c12; }
+        /* Style for comments */
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        /* Style for buttons */
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #e74c3c; /* Red color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover { background-color: #c0392b; } /* Darker red color on hover */
+    </style>
+</head>
+<body>
+    <h1>Rate Your Mechanic Shop</h1>
+    
+    <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">&#9733;</label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">&#9733;</label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">&#9733;</label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">&#9733;</label>
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">&#9733;</label>
+    </div>
+    
+    <textarea id="comment" placeholder="Enter your comments here"></textarea>
+    
+    <button onclick="reviewFeedback()">Review Feedback</button>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+
+    <!-- Modal for review feedback -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Review Your Feedback</h2>
+            <p>Rating: <span id="reviewRating"></span></p>
+            <p>Comments: <span id="reviewComments"></span></p>
+            <button onclick="submitFinalFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        // Open the modal for reviewing feedback
+        function reviewFeedback() {
+            var rating = document.querySelector('input[name="rating"]:checked').value;
+            var comments = document.getElementById('comment').value;
+
+            // Display the rating and comments in the modal
+            document.getElementById('reviewRating').textContent = rating + " stars";
+            document.getElementById('reviewComments').textContent = comments;
+
+            // Show the modal
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        // Close the modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Submit the final feedback
+        function submitFinalFeedback() {
+            // Simulate submission process
+            alert("Thank you for your feedback! Your rating has been submitted.");
+            closeModal(); // Close the modal
+            window.location.href = "app_page.html"; // Redirect to the app page
+        }
+    </script>
+</body>
+</html>
