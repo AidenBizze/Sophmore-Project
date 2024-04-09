@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<title>Car Maintenance To-Do List</title>
+	<link rel="stylesheet" href="list.css">
+</head>
+<body>
+<div class="container">
+	<div class="todo-list">
+		<h2>To-Do List</h2>
+		<div class="row">
+			<input type="text" id="input-box" placeholder="Add your task">
+			<button onclick="AddTask()">Add</button>
+		</div>
+		<ul id="list-container">
+		</ul>
+	</div>
+</div>
+<script>
+	var taskArr = [];
+	function AddTask() {
+		var task = document.getElementById("input-box").value;
+		taskArr.push(task);
+		DisplayTasks();
+		document.getElementById("input-box").value = "";
+	}
+	
+	function DisplayTasks() {
+		var list = document.getElementById("list-container");
+		list.innerHTML = "";
+		for (let i = 0; i < taskArr.length; i++) {
+			list.innerHTML += `<li class="item">${taskArr[i]} <span class="delete" onclick="DeleteTask(${i})">Delete</span> <span class="complete" onclick="MarkCompleted(${i})">Completed</span></li>`
+		}
+	}
+	
+	function DeleteTask(index) {
+		taskArr.splice(index, 1);
+		DisplayTasks();
+	}
+	
+	function MarkCompleted(index) {
+		var task = taskArr[index];
+		taskArr[index] = "<strike>" + task + "</strike>";
+		DisplayTasks();
+	}
+</script>
+</body>
+</html>
