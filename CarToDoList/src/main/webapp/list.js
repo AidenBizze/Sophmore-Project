@@ -1,28 +1,42 @@
-document.getElementById('addTaskForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const task = document.getElementById('task').value;
-  const frequency = document.getElementById('frequency').value;
-  const urgency = document.getElementById('urgency').value;
+const addTask = document.getElementById('add-task');
+const input = document.getElementById('input-task');
+const list = document.getElementById('list-container');
 
-  const newTask = document.createElement('tr');
-  newTask.innerHTML = `
-    <td>${task}</td>
-    <td>${frequency}</td>
-    <td><button class="completeTaskButton" data-index="${taskList.rows.length - 1}">Complete</button></td>
-    <td>${urgency}</td>
-    <td><button class="deleteTaskButton">Delete</button></td>
-  `;
+addTask.addEventListener('click', function() {
+  if (input.value.length > 0) {
+    const newTask = document.createElement('li');
+    newTask.className = 'task-item';
+    newTask.textContent = input.value;
+    list.appendChild(newTask);
+    input.value = '';
+    createTaskControl(newTask);
+  }
+});
 
-  const completeTaskButton = newTask.querySelector('.completeTaskButton');
-  completeTaskButton.addEventListener('click', function() {
-    newTask.classList.toggle('completed');
+function createTaskControl(taskItem) {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.addEventListener('change', function() {
+    taskItem.classList.toggle('completed');
   });
-
-  const deleteTaskButton = newTask.querySelector('.deleteTaskButton');
-  deleteTaskButton.addEventListener('click', function() {
-    newTask.remove();
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', function() {
+    taskItem.remove();
   });
+  const controlContainer = document.createElement('div');
+  controlContainer.appendChild(checkbox);
+  controlContainer.appendChild(deleteButton);
+  taskItem.appendChild(controlContainer);
+}
+list.addEventListener('click', function(event) {
+  if (event.target.tagName === 'BUTTON') {
+    event.target.parentNode.remove();
+  }
+});
 
-  const taskList = document.getElementById('taskList');
-  taskList.appendChild(newTask);
+const deleteCompletedTasksButton = document.getElementById('delete-completed-tasks');
+deleteCompletedTasksButton.addEventListener('click', function() {
+  const completedTasks = document.querySelectorAll('.task-item.completed');
+  completedTasks.forEach(task => task.remove());
 });

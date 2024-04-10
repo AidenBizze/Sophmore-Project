@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Parts Needed List</title>
+  <link rel="stylesheet" href="list.css">
+</head>
+<body>
+<div class="container">
+  <div class="parts-list">
+    <h2>Parts Needed List</h2>
+    <div class="row">
+      <input type="text" id="input-box" placeholder="Add a part">
+      <button id="add-part">Add</button>
+    </div>
+    <ul id="list-container">
+    </ul>
+  </div>
+</div>
+<script>
+const addPart = document.getElementById('add-part');
+const input = document.getElementById('input-box');
+const list = document.getElementById('list-container');
+
+addPart.addEventListener('click', function() {
+  if (input.value.length > 0) {
+    const newPart = document.createElement('li');
+    newPart.textContent = input.value;
+    list.appendChild(newPart);
+    input.value = '';
+  }
+});
+
+list.addEventListener('click', (event) => {
+  if (event.target.tagName =='LI') {
+    event.target.classList.add('completed');
+    setTimeout(() => {
+      event.target.remove();
+    }, 500);
+  }
+});
+</script>
+</body>
+</html>
