@@ -124,6 +124,7 @@
             padding: 0;
             height: 100%;
             position: relative; /* Ensure the body can contain absolute positioned elements */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
         }
 
         /* Dark mode styles */
@@ -140,20 +141,24 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        /* Dark mode for footer */
+        footer.dark-mode {
+            background-color: #333333;
+            color: #ffffff; /* Text color for dark mode */
         }
 
         /* Google Translate widget positioning */
         #google_translate_element {
             display: none; /* Initially hide the translate element */
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 20px; /* Adjusted position */
+            right: 20px; /* Adjusted position */
             z-index: 9999; /* Ensure the widget stays on top of other elements */
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script> <!-- If you're using Firestore -->
 </head>
 <body>
 <header>
@@ -197,7 +202,7 @@
             <img src="/Users/FLOATERS/Documents/4999 images/Location.png" alt="Location Tracker Image">
             <div class="app-icon-name">Location Tracker</div>
         </div>
-        <div class="app-icon additional-icon" onclick="navigateTo('partsNeed.html')">
+        <div class="app-icon additional-icon" onclick="navigateTo('parts.html')">
             <img src="/Users/FLOATERS/Documents/4999 images/PartsNeed.png" alt="Parts Lists Image">
             <div class="app-icon-name">Parts Lists</div>
         </div>
@@ -222,12 +227,6 @@
 
 <!-- Google Translate integration -->
 <div id="google_translate_element"></div>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
     // Function to toggle the Google Translate widget
@@ -253,7 +252,9 @@
 
     function toggleDarkMode() {
         var body = document.body;
+        var footer = document.querySelector('footer'); // Select footer element
         body.classList.toggle('dark-mode');
+        footer.classList.toggle('dark-mode'); // Toggle dark mode class for footer
     }
 </script>
 </body>

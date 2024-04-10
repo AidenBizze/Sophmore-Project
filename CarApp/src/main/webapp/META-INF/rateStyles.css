@@ -52,7 +52,7 @@
 
 .form-group .rating label:hover,
 .form-group .rating input[type="radio"]:checked ~ label {
-    color: pink;
+    color: #ff5454;
 }
 
 .form-group .rating input[type="radio"]:checked ~ label:before {
@@ -80,7 +80,7 @@
 
 .form-group .submit-btn button {
     padding: 15px 30px;
-    background-color: pink;
+    background-color: #ff5454;
     color: white;
     border: none;
     border-radius: 5px;
@@ -90,7 +90,7 @@
 }
 
 .form-group .submit-btn button:hover {
-    background-color: #ff69b4;
+    background-color: #ff9898;
 }
 .thank-you-message {
     text-align: center;

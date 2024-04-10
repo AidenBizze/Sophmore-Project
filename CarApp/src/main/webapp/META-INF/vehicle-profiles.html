@@ -47,6 +47,16 @@
             font-size: 14px;
             cursor: pointer;
         }
+
+        /* Style for the vehicle profile name input */
+        .vehicle-profile input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -54,13 +64,13 @@
         <h1>Vehicle Profiles</h1>
     </header>
     <main>
-        <!-- Back button -->
-        <button id="backBtn" onclick="goBack()">Back</button>
         <div class="container">
             <h2>All Vehicle Profiles</h2>
             <!-- Sample vehicle profile -->
             <div class="vehicle-profile">
-                <h3>Vehicle 1</h3>
+                <!-- Input field for the vehicle profile name -->
+                <input type="text" value="Vehicle 1">
+                <!-- Other vehicle details -->
                 <p><strong>Make:</strong> </p>
                 <p><strong>Model:</strong> </p>
                 <p><strong>Year:</strong> </p>
@@ -70,7 +80,9 @@
             </div>
             <!-- Another sample vehicle profile -->
             <div class="vehicle-profile">
-                <h3>Vehicle 2</h3>
+                <!-- Input field for the vehicle profile name -->
+                <input type="text" value="Vehicle 2">
+                <!-- Other vehicle details -->
                 <p><strong>Make:</strong> </p>
                 <p><strong>Model:</strong> </p>
                 <p><strong>Year:</strong> </p>
